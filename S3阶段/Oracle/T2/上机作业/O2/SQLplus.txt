@@ -1,0 +1,42 @@
+
+net start OracleServiceORCL
+
+net stop OracleServiceORCL
+
+show parameters db_name;
+
+spool d:/a.txt
+
+spool off
+
+SQL>@d:/b.txt
+
+清屏和文件列表
+host cls
+host dir
+
+SQL>show sga
+
+SQL>show user
+
+SQL>quit
+
+
+
+set time on 显示当前时间
+
+set numformat $999999  设置数字的显示格式
+
+set null '不详' 设置null值显示为“不详”
+
+set linesize 100 设置每行显示的最大字符数
+
+set feedback on 设置显示查询结果的行数
+
+set heading on 设置显示列标题
+
+set echo on 显示@字符执行的每一条SQL语句
+
+
+
+
