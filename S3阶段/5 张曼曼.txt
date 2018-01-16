@@ -1,0 +1,51 @@
+
+--工作经历表
+create table  history(
+hid integer primary key,--主键
+startdate date,--入职时间
+enddate date,--离职时间
+place varchar2(50),--公司名称
+job varchar2(20),--职位
+eid integer--外键，所属员工
+);
+
+--alter table emp modify sex varchar2(20); 
+--alter table dept drop column master;
+--alter table dept add master integer;
+--alter table emp add constraint sexvalue check(sex in('m','f'));
+--alter table emp drop constraint sexvalue;
+--select * from emp
+--select * from dept
+--select * from history
+--创建一个新表
+--create table empt as select * from emp;
+--select * from empt
+--添加列
+--alter table empt add eadd varchar2(50);
+--insert into emp values(6,'大头','男',sysdate,900,6);
+--insert into dept values(1,'董事长',1,'12306',0);
+--insert into dept values(2,'市场部',2,'10086',0);
+--insert into dept values(3,'财务部',3,'123456',0);
+--insert into emp values('1','大头','男',sysdate,'1','50000')；
+--insert into emp values(2,'小头','女',sysdate,2,100000);
+--insert into emp values(4,'熊二','男',sysdate,4,800000);
+--insert into emp values(5,'张三','女',sysdate,5,1200);
+--insert into emp values(6,'李四','女',sysdate,6,900);
+--创建制定列
+--create table empto as select ename,sex,hire from emp where 1=2;
+--create table emptwo as select * from emp where 1=2;
+--create table emptop as select * from emp where 1=2;
+--select * from emptop
+insert into emptop values(1,'小头','男',sysdate,4000,1);
+insert into emptop values(2,'大头','男',sysdate,900,2);
+insert into emptop values(3,'张三','男',sysdate,8000,3);
+insert into emptop values(4,'李四','女',sysdate,9000,4);
+--将工资少于8000的加300
+select sar from emptop where sar<8000;
+update emptop set sar=sar+300 where sar<8000;
+--修改大头的入职日期
+update emptop set hire=to_date('2012-9-10','yyyy-mm-dd')where ename='大头';
+--连接符||
+select ename ||'的工资是'||sar||'元' from emptop;
+--查询emp与emptop表中都有的数据
+select * from emp intersect select * from emptop;
