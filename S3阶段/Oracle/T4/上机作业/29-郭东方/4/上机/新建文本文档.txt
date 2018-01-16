@@ -1,0 +1,43 @@
+Microsoft Windows [版本 6.1.7601]
+版权所有 (c) 2009 Microsoft Corporation。保留所有权利。
+
+C:\Users\Administrator>exp
+
+Export: Release 11.2.0.1.0 - Production on 星期二 1月 16 11:13:23 2018
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+
+用户名: scott
+口令:
+
+EXP-00056: 遇到 ORACLE 错误 1017
+ORA-01017: invalid username/password; logon denied
+用户名: system
+口令:
+
+EXP-00056: 遇到 ORACLE 错误 28002
+ORA-28002: the password will expire within 7 days
+连接到: Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+输入数组提取缓冲区大小: 4096 >
+
+ 导出文件: EXPDAT.DMP >
+
+(1)E(完整的数据库), (2)U(用户) 或 (3)T(表): (2)U >
+
+导出权限 (yes/no): yes >
+
+导出表数据 (yes/no): yes >
+
+压缩区 (yes/no): yes >
+
+已导出 ZHS16GBK 字符集和 AL16UTF16 NCHAR 字符集
+
+即将导出指定的用户...
+要导出的用户: (按 RETURN 退出) >
+
+成功终止导出, 没有出现警告。
+
+C:\Users\Administrator>
+C:\Users\Administrator>
