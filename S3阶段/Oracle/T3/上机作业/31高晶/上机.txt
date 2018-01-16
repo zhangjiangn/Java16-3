@@ -1,0 +1,81 @@
+-部门表
+create table bm(
+  bid integer primary key,
+  dname varchar2(20),
+  tel varchar2(30),
+  master integer
+)
+insert into bm values(1,'生活部','1111111',0,5)
+insert into bm values(2,'信息部','2222222',1,6)
+insert into bm values(3,'纪律部','3333333',2,7)
+insert into bm values(4,'文宣部','4444444',3,8)
+-员工表
+create table emp(
+  eid integer primary key,
+  ename varchar2(20),
+  sex varchar2(1),
+  hier date,
+  s number(8,3),
+  did integer
+)
+insert into emp values(5,'li','m',sysdate-122,4500,1)
+insert into emp values(6,'mao','m',sysdate-322,5400,2)
+insert into emp values(7,'bing','m',sysdate-202,7500,3)
+insert into emp values(8,'xiao','f',sysdate-112,8500,4)
+
+-工作经历
+create table history(
+  hid integer primary key,
+  startdate date,
+  enddate date,
+  place varchar2(50),
+  job varchar2(20),
+  eid integer
+)
+insert into history values(1,sysdate-122,null,'zgmgc','生活部长',5)
+insert into history values(2,sysdate-322,null,'zgmgc','信息部长',5)
+insert into history values(3,sysdate-202,null,'zgmgc','纪律部长',5)
+insert into history values(4,sysdate-122,null,'zgmgc','文宣部长',5)
+根据现有表格创建新表
+create table emptwo as select * from emp;
+向以存在的在的表中添加一列
+alter table bm add manager integer;
+修改以存在的表中某一列的属性
+alter table emp modify sex varchar2(2);
+
+分组查询每个部门的最高工资 最低工资和平均工资
+select b.dname,max(e.s),min(e.s),avg(e.s)
+from bm b,emp e
+where b.bid=e.did
+group by b.dname
+
+分组查询每个部门的最高工资 最低工资和平均工资只保留平均工资小于5000的部门
+select b.dname,max(e.s),min(e.s),avg(e.s)
+from bm b,emp e
+where b.bid=e.did
+group by b.dname
+having avg(e.s)<5000
+
+伪列查询（用于分页）
+select * 
+from (select rownum r ,e.* from emp e)
+where r>0 and r<3;
+
+工资大于5000和2号部门的员工
+select * 
+from emp 
+where s>5000
+union 
+select * 
+from emp 
+where did=2;
+
+||符用于连接字符串使用
+select e.ename||'的工资是'|| e.s || '元' 
+from emp e
+
+
+select e.did,count(e.eid) cnt
+from emp e
+group by e.did
+order by cnt desc,did asc;
