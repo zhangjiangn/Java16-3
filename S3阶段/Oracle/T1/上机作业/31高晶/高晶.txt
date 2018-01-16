@@ -1,0 +1,11 @@
+select name from v$database;
+
+show sga;
+
+select name from v$datafile;
+
+select member from v$logfile;
+
+select name from v$controlfile;
+
+select * from DBA_Extents;
