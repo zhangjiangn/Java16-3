@@ -1,0 +1,124 @@
+
+SQL*Plus: Release 11.2.0.1.0 Production on 星期三 1月 12 11:10:12 2011
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+请输入用户名:  sys as sysdba
+输入口令:
+
+连接到:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> select name from v$database;
+
+NAME
+---------
+ORCL
+
+SQL> show parameters db_name;
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+db_name                              string      orcl
+SQL> spool D:\aaa.text;
+SQL> select sysdata from dual;
+select sysdata from dual
+       *
+第 1 行出现错误:
+ORA-00904: "SYSDATA": 标识符无效
+
+
+SQL> select sysdate from dual;
+
+SYSDATE
+--------------
+12-1月 -11
+
+SQL> spool off
+SQL> @D:\aaa.txt;
+SQL> select * from emp;
+select * from emp
+              *
+第 1 行出现错误:
+ORA-00942: 表或视图不存在
+
+
+SQL> conn scott/123
+已连接。
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE              SAL       COMM
+---------- ---------- --------- ---------- -------------- ---------- ----------
+    DEPTNO
+----------
+      7369 SMITH      CLERK           7902 17-12月-80            800
+        20
+
+      7499 ALLEN      SALESMAN        7698 20-2月 -81           1600        300
+        30
+
+      7521 WARD       SALESMAN        7698 22-2月 -81           1250        500
+        30
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE              SAL       COMM
+---------- ---------- --------- ---------- -------------- ---------- ----------
+    DEPTNO
+----------
+      7566 JONES      MANAGER         7839 02-4月 -81           2975
+        20
+
+      7654 MARTIN     SALESMAN        7698 28-9月 -81           1250       1400
+        30
+
+      7698 BLAKE      MANAGER         7839 01-5月 -81           2850
+        30
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE              SAL       COMM
+---------- ---------- --------- ---------- -------------- ---------- ----------
+    DEPTNO
+----------
+      7782 CLARK      MANAGER         7839 09-6月 -81           2450
+        10
+
+      7788 SCOTT      ANALYST         7566 19-4月 -87           3000
+        20
+
+      7839 KING       PRESIDENT            17-11月-81           5000
+        10
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE              SAL       COMM
+---------- ---------- --------- ---------- -------------- ---------- ----------
+    DEPTNO
+----------
+      7844 TURNER     SALESMAN        7698 08-9月 -81           1500          0
+        30
+
+      7876 ADAMS      CLERK           7788 23-5月 -87           1100
+        20
+
+      7900 JAMES      CLERK           7698 03-12月-81            950
+        30
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE              SAL       COMM
+---------- ---------- --------- ---------- -------------- ---------- ----------
+    DEPTNO
+----------
+      7902 FORD       ANALYST         7566 03-12月-81           3000
+        20
+
+      7934 MILLER     CLERK           7782 23-1月 -82           1300
+        10
+
+
+已选择14行。
+
+SQL> commit;
+
+提交完成。
+
+SQL> 
