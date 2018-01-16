@@ -1,0 +1,150 @@
+create table dept(
+did integer primary key,
+dname varchar2(10),
+manager integer,
+tel varchar2(20),
+dmaster integer
+)
+
+
+create table emp(
+eid integer primary key,
+ename varchar2(20),
+sex varchar2(1),
+hire date,
+sar number(8,2),
+did integer
+
+)
+
+create table history(
+hid integer primary key,
+startdate date,
+enddate date,
+place varchar2(50),
+job varchar2(20),
+eid integer
+
+)
+
+
+
+
+select *from dept;
+select *from emp;
+select *from history;
+drop table emp;
+
+
+insert into dept values(1,'董事会'，5，'111111',0);
+insert into dept values(2,'市场部'，6，'111111',1);
+insert into dept values(3,'财务部'，7，'111111',1);
+insert into dept values(4,'采购部'，8，'111111',1);
+
+insert into emp values(5,'tom'，'m'，sysdate,4500.00,1);
+insert into emp values(6,'blue'，'m'，sysdate,2000.00,2);
+insert into emp values(7,'red'，'f'，sysdate,3000.00,3);
+insert into emp values(8,'green'，'f'，sysdate,4000.00,4);
+
+
+
+--向表中添加数据时，数据来源于已知的表
+create table emptwo as 
+select ename,sex,hire from emp;
+
+
+create table emptwo as 
+select ename,sex,hire from emp where 1=2;
+
+
+select *from emptwo;
+drop table emptwo;
+
+
+alter table emp modify sex varchar2(2);
+
+alter table emp add constraint cl check(sex in('m','f'));
+
+alter table emp drop constraint cl;
+
+
+--使用update语句更新数据
+update emp set sar=sar+200 where sar<6000;
+
+
+update emp set hire=to_date('2012-03-01','yyyy-mm-dd') where ename='blue';
+
+
+--使用delete语句删除数据
+delete from emp;
+
+delete from where ename='red'
+
+
+
+
+--使用select语句查询数据表
+
+
+--1.查询每个部门的最高工资，最低工资和平均工资
+select d.dname,max(e.sar),min(e.sar),avg(e.sar) from dept d,emp e where e.did=d.did group by d.dname;
+
+
+--在此查询的基础上只保留平均工资小于4000的部门
+select d.dname,max(e.sar),min(e.sar),avg(e.sar) from dept d,emp e where e.did=d.did group by d.dname having avg(e.sar)<4000;
+
+
+
+--2.查询emp表第二到第三条记录
+select *from (select rownum r,e.* from emp e) where r>=2 and r<=3;
+
+
+
+--3.将工资大于4000的员工和2号部门的员工求并集
+select *from emp where sar>4000
+union
+select *from emp where did=2;
+
+
+--4.查询emp表中有、但emptwe表中没有的记录，将两张表的数据求差集
+select *from emp
+union
+select *from emptwo;
+
+
+
+
+--5.查两张表中都有的数据
+select *from emp
+intersect
+select *from emptwo;
+
+
+--6.||连接字符串
+
+select ename ||'的工资是'||sar||'元' from emp;
+
+
+--7.查询工资比其所在部门平均工资高的员工信息
+
+select *from emp where eid in(
+select a.eid from (select eid,sar,did from emp) a,
+                  (select did,avg(sar) sar from emp group by did) b 
+                   where a.did=b.did and a.sar>b.sar
+
+);
+
+
+
+
+--8.查询人数最多的部门，如果有多个部门的人数相同，则查询部门编号最小的部门
+
+select *from dept where did=(
+
+select did 
+from(select did,count(eid) cnt from emp group by did order by cnt desc,did asc)
+
+where rownum=1
+
+
+);
