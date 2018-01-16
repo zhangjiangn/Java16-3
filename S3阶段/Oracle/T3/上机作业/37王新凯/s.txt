@@ -1,0 +1,10 @@
+create table deptd(
+did integer primary key,
+dname varchar2(20),
+tel varchar2(15),
+ress varchar2(20)
+);
+insert into deptd values(1,'董事会','11111','沈阳');
+insert into deptd values(2,'市场部','22222','福建');
+insert into deptd values(3,'研发部','33333','长春');
+commit;
