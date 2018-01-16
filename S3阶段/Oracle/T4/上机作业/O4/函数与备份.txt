@@ -1,0 +1,118 @@
+create table dept(
+did integer primary key,
+dname varchar2(10),
+manager integer,
+tel varchar2(20),
+dmaster integer
+)
+
+create table emp(
+eid integer primary key,
+ename varchar2(20),
+sex varchar2(1),
+hire date,
+sar number(8,2),
+did integer
+
+)
+
+insert into dept values(1,'董事会'，5，'111111',0);
+insert into dept values(2,'市场部'，6，'111111',1);
+insert into dept values(3,'财务部'，7，'111111',1);
+insert into dept values(4,'采购部'，8，'111111',1);
+
+
+
+insert into emp values(5,'tom'，'m'，sysdate,4500.00,1);
+insert into emp values(6,'blue'，'m'，sysdate,2000.00,2);
+insert into emp values(7,'red'，'f'，sysdate,3000.00,3);
+insert into emp values(8,'green'，'f'，sysdate,4000.00,4);
+
+select *from dept;
+
+select *from emp;
+
+--数学函数
+
+select ceil(3.14) from dual;
+
+select abs(-5.21) from dual;
+
+select floor(6.66) from dual;
+
+select cos(45) from dual;
+
+select sin(45) from dual;
+
+select power(2,3) from dual;
+
+select mod(16,3) from dual;
+
+select round(4.5657,3) from dual;
+
+select trunc(4.5657,3) from dual;
+
+select sqrt(9) from dual;
+
+select sign(-100) from dual;
+
+
+--字符函数
+select concat('no','body') from dual;
+
+select substr('success',3,2) from dual;
+
+select ltrim('left','le') from dual;
+
+select rtrim('right','ht') from dual;
+
+select length('server') from dual;
+
+select upper('baby') from dual; 
+
+select lower('QWET') from dual;
+
+select initcap('by') from dual;
+
+select translate('jack','j','b') from dual;
+
+select instr('window','n') from dual;
+
+select replace('table','bl','s')  from dual;
+
+--日期函数
+
+select sysdate from dual;
+
+select months_between(to_date('2018-1-11','YYYY-MM-DD'),to_date('2017-9-11','YYYY-MM-DD')) from dual;
+
+select add_months(sysdate,4) from dual;
+
+select next_day(sysdate,3) from dual;
+
+select last_day(sysdate) from dual;
+
+--转换函数
+select to_char(sysdate,'yyyy-mm-dd dy am hh:mi:ss') from dual;
+
+select to_date('2014-01-02','yyyy-mm-dd')  from dual;
+
+select to_number('$123456','$999999') from dual;
+
+
+--其他高级查询
+update dept set tel=null where dname='市场部'
+select d.did,d.dname,nvl(d.tel,'不详') from dept d;
+
+
+select *from emp where (sex,did) in (select sex,did from emp where ename='blue');
+
+
+select eid,ename, 
+case sex
+
+  when 'm' then '男'
+  when 'f' then '女'
+ end
+ from emp;
+
