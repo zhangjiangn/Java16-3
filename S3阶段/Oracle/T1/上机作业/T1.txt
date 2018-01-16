@@ -1,0 +1,11 @@
+select name from v$controlfile
+
+select member from v$logfile
+
+select name from v$datafile
+
+select name from v$database
+
+select * from DBA_EXTENTS
+
+
