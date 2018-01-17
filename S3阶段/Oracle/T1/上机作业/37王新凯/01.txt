@@ -1,0 +1,12 @@
+用户名:sys as sysdba
+密码:123
+select name from v$database;
+select name from v$controlfile;
+select member from v$logfile;
+select name from v$datafile;
+show sga;
+用户名:scott
+密码:123
+select * from emp;
+select * from dept;
+update emp set ename='zhangsan' where empno='7369';
