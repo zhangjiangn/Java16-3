@@ -1,0 +1,34 @@
+create or replace view empview
+as
+select ename,sex,hire from emp
+
+insert into empview values('coco',20,'f');
+
+create or replace view empview
+as
+select * from emp where sar>5000;
+
+insert into empview values(21,'cole','m',sysdate,4000,2);
+
+create index  index_name  on table_name(index_column) 
+	[pctfree 0];
+
+create unique index  idx_emp_ename on emp(empno) 
+	[pctfree 0];
+
+
+drop index indexname;
+
+create table en(
+	tid integer primary key,
+	nam varchar2(20)
+);
+insert into en values(seq.nextval,'tom');
+insert into en values(seq.nextval,'jack');
+insert into en values(seq.nextval,'mary');
+
+
+select tablespace_name from user_tablespaces; 
+
+select * from v$tablespace;
+
