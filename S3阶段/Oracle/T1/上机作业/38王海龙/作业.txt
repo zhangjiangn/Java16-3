@@ -1,0 +1,23 @@
+运行：
+
+services.msc      查看当前系统的所有服务
+
+sqlplus           进入黑色控制台，连接Oracle数据库
+
+
+控制台界面：
+
+sys as sysdba     超级管理员的用户名
+
+select name from v$database;    查看当前连接的数据库名称
+
+show sga;       查看当前Oracle实例的SGA区域的内存大小
+
+select name from v$controlfile;		查询控制文件所在的位置
+
+select member from v$logfile;		查询日志文件所在的位置
+
+select name from v$datafile;		查看当前数据库的数据文件的位置
+
+
+select * from dba_exents;		
