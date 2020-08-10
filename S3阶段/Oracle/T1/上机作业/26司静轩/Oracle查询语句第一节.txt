@@ -1,0 +1,51 @@
+
+SQL*Plus: Release 11.2.0.1.0 Production on 星期六 1月 13 10:56:49 2018
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+请输入用户名:  sys as sysdba
+输入口令:
+
+连接到:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> select name from v$database;
+
+NAME
+---------
+ORCL
+
+SQL> show sga
+
+Total System Global Area 1071333376 bytes
+Fixed Size                  1375792 bytes
+Variable Size             545259984 bytes
+Database Buffers          520093696 bytes
+Redo Buffers                4603904 bytes
+SQL> select name from v$controlfile;
+
+NAME
+--------------------------------------------------------------------------------
+C:\ORACLE\ORADATA\ORCL\CONTROL01.CTL
+C:\ORACLE\FLASH_RECOVERY_AREA\ORCL\CONTROL02.CTL
+
+SQL> select member from v$logfile;
+
+MEMBER
+--------------------------------------------------------------------------------
+C:\ORACLE\ORADATA\ORCL\REDO03.LOG
+C:\ORACLE\ORADATA\ORCL\REDO02.LOG
+C:\ORACLE\ORADATA\ORCL\REDO01.LOG
+
+SQL> select name from v$datafile;
+
+NAME
+--------------------------------------------------------------------------------
+C:\ORACLE\ORADATA\ORCL\SYSTEM01.DBF
+C:\ORACLE\ORADATA\ORCL\SYSAUX01.DBF
+C:\ORACLE\ORADATA\ORCL\UNDOTBS01.DBF
+C:\ORACLE\ORADATA\ORCL\USERS01.DBF
+C:\ORACLE\ORADATA\ORCL\EXAMPLE01.DBF
+
+SQL>

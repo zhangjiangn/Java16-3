@@ -1,0 +1,65 @@
+create table SellRecord(
+sid integer primary key,
+ListNumber  varchar2(30)
+)
+
+、13-2、13-3、13-10、13-100、13-108、13-18、13-11、13-15、14-1、14-2
+
+insert into SellRecord values ('1','13-1');
+insert into SellRecord values ('2','13-18');
+insert into SellRecord values ('3','13-11');
+insert into SellRecord values ('4','13-15');
+insert into SellRecord values ('5','13-100');
+insert into SellRecord values ('6','13-108');
+
+insert into SellRecord values ('7','13-2');
+insert into SellRecord values ('8','13-3');
+insert into SellRecord values ('9','14-1');
+insert into SellRecord values ('10','14-6');
+insert into SellRecord values ('11','14-8');
+insert into SellRecord values ('12','14-2');
+insert into SellRecord values ('13','13-158');
+
+
+select *from SellRecord;
+
+
+select to_number(substr(ListNumber,1,instr(ListNumber,'-')-1)) as a ,to_number(substr(ListNumber,instr(ListNumber,'-')+1))as b ,
+ListNumber from SellRecord order by a,b asc ;
+
+select instr('113-98','-') from dual;
+select substr ('113-98','1','3') from dual;
+
+
+
+
+create table Card(
+cid integer primary key,
+password varchar2(30)
+)
+select*from Card;
+insert into Card values ('1','aolokisjpapol');
+insert into Card values ('2','0olokisloapao');
+insert into Card values ('3','aolokojoool101');
+insert into Card values ('4','aol10201olioj');
+insert into Card values ('5','sllsisoaoo1100');
+insert into Card values ('6','aolojaiwi1010ooll');
+
+
+update Card set password= replace(replace(password,'l','1'),'o','0');
+
+select *from Card;
+
+drop table Card;
+
+
+
+select ceil(1.2) from dual;
+select floor(1.2) from dual;
+select round(2.1946,2) from dual;
+
+
+select next_day(to_date('2018-01-01','yyyy-mm-dd'),2) from dual;
+
+
+select next_day(sysdate,2) from dual;
