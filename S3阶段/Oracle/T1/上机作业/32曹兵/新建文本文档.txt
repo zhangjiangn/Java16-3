@@ -1,0 +1,70 @@
+          一scott用户
+@1根据sqlplus进入
+@2用户名：scott/tiger
+@3更改口令：123
+@4SQL>select name from v$database;
+      select name from v$controlfile;
+      select member from v$logfile;
+      select name from v$datafile;
+  结果都是
+      第1行出现错误：
+      ORA-00942：table or view does not exist 
+@5查询数据
+select * from emp;
+select * from dept;
+  查询出相应的结果。
+@6修改数据【emp员工表】
+SQL>update emp set ename='张三' where empno=7369;
+ 已更新一行
+SQL>commit;
+ 提交完成。
+          二超级管理员
+@1根据sqlplus进入
+@2用户名：sys as sysdba
+@3更改口令：123
+@4SQL>select name from v$database;
+NAME
+--------
+ORCL
+@5SQL>select name from v$controlfile;
+NAME
+-------------------
+C:\ORACLE\ORADATA\ORCL\CONTROL01.CTL
+C:\ORACLE\FLASH_RECOUERY_AREA\ORCL\CONTROL02.CTL
+@6SQL>select member from v$logfile;
+MEMBER
+-------------------
+C:\ORACLE\ORADATA\ORCL\REDO03.LOG
+C:\ORACLE\ORADATA\ORCL\REDO02.LOG
+C:\ORACLE\ORADATA\ORCL\REDO01.LOG
+@7SQL>select name from v$datafile;
+NAME
+-------------------
+C:\ORACLE\ORADATA\ORCL\SYSTEM01.DBF
+C:\ORACLE\ORADATA\ORCL\SYSAUX01.DBF
+C:\ORACLE\ORADATA\ORCL\UNDOTBS01.DBF
+C:\ORACLE\ORADATA\ORCL\USERS01.DBF
+C:\ORACLE\ORADATA\ORCL\EXAMPLE01.DBF
+@8查询语句
+select * from emp;
+select * from dept;
+  结果都是
+第一行出现错误：
+ORA-00942：表或视图不存在
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
