@@ -1,0 +1,64 @@
+create table dept(
+       did integer primary key,
+       dname varchar2(20),
+       adress varchar2(20)
+);
+create table emp(
+       eid integer primary key,
+       ename varchar2(20),
+       sex varchar2(1),
+       did integer
+);
+insert into dept values(1,'市场部','上海');
+insert into dept values(2,'人事部','北京');
+insert into dept values(3,'财务部','杭州');
+insert into dept values(4,'董事会','河南');
+insert into emp values(1,'jack','m',1);
+insert into emp values(2,'tom','m',2);
+insert into emp values(3,'kelly','f',3);
+select * from emp;
+select * from dept;
+
+select ceil(3.14) from dual;
+select floor(3.14) from dual;
+select round(3.1415926,3) from dual;
+select mod(10,3) from dual;
+select power(2,10) from dual;
+
+select initcap('hello') from dual;
+select lower('HELLO') from dual;
+select upper('hello') from dual;
+select length('hello') from dual;
+select ltrim('   hello') from dual;
+select rtrim('hello   ') from dual;
+select rtrim('helloword','word') from dual;
+select translate('jack','j','b') from dual;
+select replace('jack','j','bl') from dual;
+select instr('oracle','a')from dual;
+select substr('oracle11g',7,3)from dual;
+select concat('oracle','11g')from dual;
+
+select sysdate from dual;
+select months_between(to_date('2018-1-17','yyyy-MM-dd'),sysdate) from dual;
+select add_months(sysdate,5) from dual;
+select next_day(sysdate+12,5) from dual;
+select last_day(sysdate+57) from dual;
+
+select to_char(sysdate,'yyyy"年"mm"月"dd"日"') from dual;
+select to_char(sysdate,'yyyy_mm_dd day hh24:mi:ss') from dual;
+select to_date('2017—10-10','yyyy-mm-dd') from dual;
+select to_date('10-10-2017','mm-dd-yyyy') from dual;
+select to_number('0023','9999') from dual;
+
+update dept set adress=null where dname = '财务部';
+select did, dname, nvl(adress,'无') from dept;
+
+select eid, ename,
+ case sex
+      when 'm' then '男'
+      when 'f' then '女'
+      else sex
+ end
+ from emp;
+
+select d.* from dept d where not exists (select e.* from emp e where e.did=d.did);
