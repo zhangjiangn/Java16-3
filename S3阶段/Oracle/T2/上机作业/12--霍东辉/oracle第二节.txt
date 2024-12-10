@@ -1,0 +1,117 @@
+
+SQL*Plus: Release 11.2.0.1.0 Production on 星期日 1月 14 10:03:16 2018
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+请输入用户名:  sys as sysdba
+输入口令:
+
+连接到:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> select value from v$parameter where name='db_name';
+
+VALUE
+--------------------------------------------------------------------------------
+
+orcl
+
+SQL> show parameters db_name;
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+db_name                              string      orcl
+SQL> spool c:/b.txt
+SQL> select sysdate from dual;
+
+SYSDATE
+--------------
+14-1月 -18
+
+SQL> spool off
+SQL> @c:/c.txt;
+SQL> ttile '部门列表'
+SP2-0734: 未知的命令开头 "ttile '部..." - 忽略了剩余的行。
+SQL> select*from dept
+  2  ;
+select*from dept
+            *
+第 1 行出现错误:
+ORA-00942: 表或视图不存在
+
+
+SQL> @c:/c.txt;
+
+表已创建。
+
+
+已创建 1 行。
+
+
+已创建 1 行。
+
+
+已创建 1 行。
+
+
+已创建 1 行。
+
+  2
+SQL> select * from dept;
+
+       DID DNAME                TEL             RESS
+---------- -------------------- --------------- --------------------
+         1 董事会               1111111         沈阳
+         2 市场部               2222222         武汉
+         3 研发部               3333333         长春
+         4 财务部               4444444         南京
+
+SQL> column tel heading '部门电话'
+SQL> column tel format $99,999,999
+SQL> column ress null '地址不明'
+SQL> column dname jus center
+SQL> column did noprint
+SQL> select*from dept;
+
+       DNAME         部门电话        RESS
+-------------------- --------------- --------------------
+董事会               1111111         沈阳
+市场部               2222222         武汉
+研发部               3333333         长春
+财务部               4444444         南京
+
+SQL> ttitle'部门列表'
+SQL> btitle'制表人：tom'
+SQL> column tel heading'部门电话'
+SQL> column tel format $99,999,999
+SQL> column ress null '地址不明'
+SQL> column dname jus center
+SQL> column did noprint
+SQL> select * from dept;
+
+星期日 1月  14                                                        第    1
+                                    部门列表
+
+       DNAME         部门电话        RESS
+-------------------- --------------- --------------------
+董事会               1111111         沈阳
+市场部               2222222         武汉
+研发部               3333333         长春
+财务部               4444444         南京
+
+
+
+                                  制表人：tom
+
+SQL> lsnrctl start
+SP2-0734: 未知的命令开头 "lsnrctl st..." - 忽略了剩余的行。
+SQL> edit
+已写入 file afiedt.buf
+
+  1* select * from dept
+SQL> save
+SP2-0105: 缺少实体名或实体名非法
+SQL> save @c:/b.txt
+SP2-0110: 无法创建保存文件 "orclc:/b.txt"
+SQL>
