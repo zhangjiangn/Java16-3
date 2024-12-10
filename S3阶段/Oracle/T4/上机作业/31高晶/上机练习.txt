@@ -1,0 +1,85 @@
+select initcap('hello') from dual;
+select lower('HELLO') from dual;
+select upper('hello') from dual;
+select length('hello') from dual;
+select ltrim('    hello') from dual;
+select rtrim('hello    ','   ') from dual;
+select translate('jack','j','b') from dual;
+select replace('jack','j','b2') from dual;
+select instr('oracle','a') from dual;
+select substr('oracle10g',5,3) from dual;
+select concat('oracle','10g') from dual;
+
+select sysdate from dual;
+select months_between(to_date('2010-10-21','yyyy-mm-dd'),sysdate) from dual;
+select add_months(sysdate,5) from dual;
+select next_day(sysdate+12,5) from dual;
+select last_day(sysdate+57) from dual;
+
+select to_char(sysdate,'yyyy"年"mm"月"dd"日"') from dual;
+select to_char(sysdate,'yyyy-mm-dd day hh24:mi:ss')from dual;
+select to_date('2012-10-19','YYYY-mm-dd') from dual;
+select to_date('6-5-2008','mm-dd-YYYY') from dual;
+select to_number('$39,275.50','$99,999.99') from dual;
+select to_number('￥39,275.50','L99,999.99') from dual;
+select to_number('0023','9999') from dual;
+
+--部门表：
+create table dept(
+did integer primary key ,
+dname varchar2(20) , 
+manager integer , 
+tel varchar2(30), 
+master integer   
+);
+--员工表：
+create table emp(
+eid integer primary key,
+ename varchar2(20), 
+sex varchar2(1), 
+hire date , 
+sar number(8,2), 
+did integer 
+);
+--工作经历表
+create table history(
+hid integer primary key , 
+startdate date , 
+enddate date, 
+place varchar2(50), 
+job varchar2(20), 
+eid integer 
+);
+
+insert into dept values(1,'董事会',5,'iiiii',0);
+insert into dept values(2,'市场部',6,'22iioo22',0);
+insert into dept values(3,'财务部',7,'ioio333',0);
+insert into dept values(4,'采购部',8,'444oioi4',0);
+
+select * from dept;
+delete dept
+
+select replace(replace(tel,'i','1'),'o','0') from dept;
+
+create table s(
+hid integer primary key , 
+list_number varchar2(20)
+);
+
+insert into s values(1,'13-1');
+insert into s values(2,'13-2');
+insert into s values(3,'14-3');
+insert into s values(6,'15-6');
+insert into s values(4,'14-4');
+insert into s values(7,'16-8');
+insert into s values(8,'13-12');
+insert into s values(9,'15-24');
+insert into s values(10,'14-1');
+insert into s values(11,'13-11');
+
+
+select * from s
+
+select list_number
+from s
+order by to_number(substr(list_number,1,instr(list_number,'-')-1)) ,to_number(substr(list_number,instr(list_number,'-')+1))
