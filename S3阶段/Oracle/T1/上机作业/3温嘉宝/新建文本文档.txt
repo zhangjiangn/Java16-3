@@ -1,0 +1,15 @@
+select * from emp;
+select * from dept;
+select * from bonus;
+select * from salgrade;
+
+update emp set ename='zhangsan' where empno='7369';
+
+select name from v$database;
+select name from v$controlfile;
+select member from v$logfile;
+select name from v$datafile;
+show sga;
+
+select * from dba_extents;
+
