@@ -1,0 +1,17 @@
+SQL> select sysdate from dual;
+
+SYSDATE                                                                         
+--------------                                                                  
+14-1月 -18                                                                      
+
+SQL> @d:/b.txt
+SP2-0310: 无法打开文件 "d:/b.txt"
+SQL> @d:/a.txt;
+select * from dept
+              *
+第 1 行出现错误: 
+ORA-00942: 表或视图不存在 
+
+
+SQL> spool d:/b.txt;
+

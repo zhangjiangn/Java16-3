@@ -1,0 +1,33 @@
+SQL> select * from dept;
+select * from dept
+              *
+第 1 行出现错误: 
+ORA-00942: 表或视图不存在 
+
+
+SQL> conn scott/123;
+ERROR:
+ORA-01017: invalid username/password; logon denied 
+
+
+警告: 您不再连接到 ORACLE。
+SQL> select * from dept;
+SP2-0640: 未连接
+SQL> conn scott/tiger;
+ERROR:
+ORA-28001: the password has expired 
+
+
+更改 scott 的口令
+口令已更改
+已连接。
+SQL> select * from dept;
+
+    DEPTNO DNAME          LOC                                                   
+---------- -------------- -------------                                         
+        10 ACCOUNTING     NEW YORK                                              
+        20 RESEARCH       DALLAS                                                
+        30 SALES          CHICAGO                                               
+        40 OPERATIONS     BOSTON                                                
+
+SQL> spool d:/c.txt;
