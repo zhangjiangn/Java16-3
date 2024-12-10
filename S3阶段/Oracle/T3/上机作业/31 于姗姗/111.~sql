@@ -1,0 +1,86 @@
+select * from emp;
+
+insert into emp values(15,'yello','clerk',7652,1980/5/12,2620,0.00,10);
+
+update emp set sal=sal+500;
+update emp set sal=sal+500 where sal<5000;
+delete emp where ename='ALLEN';
+
+select * from emp wheresar not between 3000 and 6000;
+
+select * from emp where did in(2,3);
+
+select * from where ename like 't%';
+
+select * from emp where sex='f' and sal>5000;
+
+updata emp set ename ='king1' where ename='king';
+
+select max(e.sal),min(e.sal),avg(e.sal) from emp;
+
+select count(eid),sum(sal) from emp;
+
+select distinct(did) from emp;
+
+select d.dname ,max(e.sal),min(e.sal),avg(e.sal)
+from dept d,emp e 
+where d.did=e.did 
+group by d.dname;
+
+select d.dname ,max(e.sal),min(e.sal),avg(e.sal)
+from dept d,emp e 
+where d.did=e.did 
+group by d.dname;
+having ang(e.sal)<5000;
+
+select * from (select rownum r,e.* from emp e)
+where r>3and r<7;
+
+select * from emp where sal>5000 
+union
+select * from emp where did=2; 
+
+select * from emp where eid not in(select manager from dept);
+
+select eid,sal,did from emp;
+
+select did,avg(sal) from emp group by did;
+
+select a.eid
+from (select eid,sar,did from emp)a,
+(select did,avg(sal)sal
+from emp
+group by did) b
+where a.did=b.did and a.sal>b.sal;
+
+select * from emp where eid in
+(select a.eid
+from (select eid,sal,did from emp)a
+(select did,avg(sal)sal
+from emp
+group by did) b
+where a.did=b.did and a.sal>b.sal);
+
+select did,count(eid) cnt from emp group by did order by cnt desc,did asc;
+
+select did
+from(select did,count(eid) cnt from emp group by did order by cnt desc,did asc)
+where rownum=1;
+
+select * from emp where did=(
+select did
+from (select did,count(eid) cnt from emo group by did order by cnt desc,did asc)
+where rownum=1);
+
+insert into dept values(99,'研发部',0,'333333',1);
+
+select d.did ,d.dname,e.ename
+from dept d left join emp e on d.did =e.did;
+
+select d.did ,d.dname,d.tel,m.dname 上级部门
+from dept d,dept m
+where d.master =m.did;
+
+select d.did ,d.dname,d.tel,m.dname 上级部门
+from dept d left join dept m
+where d.master =m.did;
